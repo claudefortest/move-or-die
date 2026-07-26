@@ -19,6 +19,7 @@ data = PackedByteArray("cW9hZgAARhsBAKxEFAAIGAAAAAAAAAAAAAAAAOAAQAD/FQwSmACCmIFR
 format = 3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0trgt"]
+radius = 8.0
 
 [node name="Main" type="Node2D" unique_id=12054848]
 script = ExtResource("1_7mycd")
@@ -157,12 +158,12 @@ theme_override_font_sizes/font_size = 48
 horizontal_alignment = 1
 
 [node name="TimeReset" type="Area2D" parent="." unique_id=49456742]
+position = Vector2(127, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TimeReset" unique_id=1065784788]
 shape = SubResource("CircleShape2D_0trgt")
 
 [node name="Sprite2D" type="Sprite2D" parent="TimeReset" unique_id=2120092555]
-position = Vector2(127, -4)
 texture = ExtResource("5_272bh")
 offset = Vector2(5, 5)
 

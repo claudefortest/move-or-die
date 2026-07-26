@@ -32,9 +32,14 @@ func _on_count_down_timer_timeout() -> void:
 	get_tree().reload_current_scene()
 
 
+# Called by the player whenever it actually moves, so staying still is what kills you.
+func reset_timer() -> void:
+	if not is_dead:
+		timer.start()
+
+
 func _on_time_reset_body_entered(body):
 	if body.name == "Player":
-		timer.start() # this resets the ten second clock back to full
 		$TimeReset/PickupSound.play()
 		$TimeReset/Sprite2D.hide()
 		$TimeReset/CollisionShape2D.set_deferred("disabled", true)
