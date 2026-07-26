@@ -19,12 +19,8 @@ func _process(_delta):
 	else:
 		label.modulate = Color.WHITE
 		
-func _on_countdown_timer_timeout():
-	get_tree().reload_current_scene()
-
-
 func _on_count_down_timer_timeout() -> void:
-	pass # Replace with function body.
+	get_tree().reload_current_scene()
 
 
 func _on_time_reset_body_entered(body):
