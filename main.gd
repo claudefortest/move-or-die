@@ -1,5 +1,8 @@
 extends Node2D
 
+const TOTAL_TIME := 1.67
+const DISPLAY_MAX := 5
+
 @onready var timer = $CountDownTimer
 @onready var label = $CanvasLayer/TimerLabel
 @onready var win_screen = $CanvasLayer/WinScreen
@@ -9,7 +12,7 @@ var has_won := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	label.text = str(ceil(timer.time_left))
+	label.text = str(DISPLAY_MAX)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,9 +20,11 @@ func _process(_delta):
 	if is_dead or has_won:
 		return
 
-	label.text = str(int(ceil(timer.time_left)))
+	var display_value := int(ceil((timer.time_left / TOTAL_TIME) * DISPLAY_MAX))
+	display_value = clamp(display_value, 0, DISPLAY_MAX)
+	label.text = str(display_value)
 
-	if timer.time_left <= 3.0:
+	if display_value <= 2:
 		label.modulate = Color.RED
 	else:
 		label.modulate = Color.WHITE

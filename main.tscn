@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://168m0bmol7jf" path="res://New Piskel-1.png.png" id="5_272bh"]
 [ext_resource type="AudioStream" uid="uid://b1ysblcgvslqk" path="res://pickupCoin.wav" id="6_5vw27"]
 [ext_resource type="Texture2D" uid="uid://tbiokqvlmqhv" path="res://Tiles/tile_0001.png" id="7_floor"]
+[ext_resource type="Texture2D" path="res://background.png" id="8_bg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0trgt"]
 size = Vector2(16, 30)
@@ -38,6 +39,18 @@ size = Vector2(24, 40)
 
 [node name="Main" type="Node2D" unique_id=12054848]
 script = ExtResource("1_7mycd")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=900006000]
+layer = -1
+
+[node name="BackgroundRect" type="TextureRect" parent="BackgroundLayer" unique_id=900006001]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_bg")
+stretch_mode = 1
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=819493917]
 script = ExtResource("1_1bvp3")
@@ -152,7 +165,7 @@ position = Vector2(169, 21)
 texture = ExtResource("7_floor")
 
 [node name="CountDownTimer" type="Timer" parent="." unique_id=248393496]
-wait_time = 10.0
+wait_time = 1.67
 one_shot = true
 autostart = true
 
