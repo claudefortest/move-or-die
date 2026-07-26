@@ -21,6 +21,9 @@ format = 3
 [sub_resource type="CircleShape2D" id="CircleShape2D_0trgt"]
 radius = 8.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_void"]
+size = Vector2(2000, 200)
+
 [node name="Main" type="Node2D" unique_id=12054848]
 script = ExtResource("1_7mycd")
 
@@ -170,5 +173,12 @@ offset = Vector2(5, 5)
 [node name="PickupSound" type="AudioStreamPlayer" parent="TimeReset" unique_id=519720812]
 stream = ExtResource("6_5vw27")
 
+[node name="Void" type="Area2D" parent="." unique_id=900000100]
+position = Vector2(7, 400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Void" unique_id=900000101]
+shape = SubResource("RectangleShape2D_void")
+
 [connection signal="timeout" from="CountDownTimer" to="." method="_on_count_down_timer_timeout"]
 [connection signal="body_entered" from="TimeReset" to="." method="_on_time_reset_body_entered"]
+[connection signal="body_entered" from="Void" to="." method="_on_void_body_entered"]
