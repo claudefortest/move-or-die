@@ -2,8 +2,10 @@ extends Node2D
 
 @onready var timer = $CountDownTimer
 @onready var label = $CanvasLayer/TimerLabel
+@onready var win_screen = $CanvasLayer/WinScreen
 
 var is_dead := false
+var has_won := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +14,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if is_dead:
+	if is_dead or has_won:
 		return
 
 	label.text = str(int(ceil(timer.time_left)))
@@ -27,7 +29,7 @@ func _on_count_down_timer_timeout() -> void:
 
 
 func die() -> void:
-	if is_dead:
+	if is_dead or has_won:
 		return
 	is_dead = true
 	label.text = "0"
@@ -40,7 +42,7 @@ func die() -> void:
 
 # Called by the player whenever it actually moves, so staying still is what kills you.
 func reset_timer() -> void:
-	if not is_dead:
+	if not is_dead and not has_won:
 		timer.start()
 
 
@@ -54,3 +56,14 @@ func _on_time_reset_body_entered(body):
 func _on_void_body_entered(body):
 	if body.name == "Player":
 		die()
+
+
+func _on_flag_body_entered(body):
+	if body.name == "Player" and not has_won and not is_dead:
+		has_won = true
+		timer.stop()
+		win_screen.visible = true
+
+
+func _on_play_again_pressed() -> void:
+	get_tree().reload_current_scene()
