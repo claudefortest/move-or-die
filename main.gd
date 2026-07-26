@@ -23,6 +23,12 @@ func _process(_delta):
 		label.modulate = Color.WHITE
 
 func _on_count_down_timer_timeout() -> void:
+	die()
+
+
+func die() -> void:
+	if is_dead:
+		return
 	is_dead = true
 	label.text = "0"
 	label.modulate = Color.RED
@@ -43,3 +49,8 @@ func _on_time_reset_body_entered(body):
 		$TimeReset/PickupSound.play()
 		$TimeReset/Sprite2D.hide()
 		$TimeReset/CollisionShape2D.set_deferred("disabled", true)
+
+
+func _on_void_body_entered(body):
+	if body.name == "Player":
+		die()
