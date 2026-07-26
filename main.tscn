@@ -22,7 +22,19 @@ format = 3
 radius = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_void"]
-size = Vector2(2000, 200)
+size = Vector2(1600, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform2"]
+size = Vector2(180, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform3"]
+size = Vector2(180, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform4"]
+size = Vector2(216, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_flag"]
+size = Vector2(24, 40)
 
 [node name="Main" type="Node2D" unique_id=12054848]
 script = ExtResource("1_7mycd")
@@ -146,6 +158,46 @@ autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1343395709]
 
+[node name="WinScreen" type="ColorRect" parent="CanvasLayer" unique_id=900005000]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="WinLabel" type="Label" parent="CanvasLayer/WinScreen" unique_id=900005001]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.4
+offset_left = -220.0
+offset_top = -30.0
+offset_right = 220.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+text = "You finished the game!"
+
+[node name="PlayAgainButton" type="Button" parent="CanvasLayer/WinScreen" unique_id=900005002]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.55
+anchor_right = 0.5
+anchor_bottom = 0.55
+offset_left = -80.0
+offset_top = 0.0
+offset_right = 80.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Play Again"
+
 [node name="TimerLabel" type="Label" parent="CanvasLayer" unique_id=1143371532]
 anchors_preset = 8
 anchor_left = 0.5
@@ -174,11 +226,179 @@ offset = Vector2(5, 5)
 stream = ExtResource("6_5vw27")
 
 [node name="Void" type="Area2D" parent="." unique_id=900000100]
-position = Vector2(7, 400)
+position = Vector2(500, 500)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Void" unique_id=900000101]
 shape = SubResource("RectangleShape2D_void")
 
+[node name="Platform2" type="StaticBody2D" parent="." unique_id=900001000]
+position = Vector2(375.0, 41)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2" unique_id=900001001]
+shape = SubResource("RectangleShape2D_platform2")
+
+[node name="Tile0" type="Sprite2D" parent="Platform2" unique_id=900001002]
+position = Vector2(-81.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile1" type="Sprite2D" parent="Platform2" unique_id=900001003]
+position = Vector2(-63.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile2" type="Sprite2D" parent="Platform2" unique_id=900001004]
+position = Vector2(-45.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile3" type="Sprite2D" parent="Platform2" unique_id=900001005]
+position = Vector2(-27.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile4" type="Sprite2D" parent="Platform2" unique_id=900001006]
+position = Vector2(-9.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile5" type="Sprite2D" parent="Platform2" unique_id=900001007]
+position = Vector2(9.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile6" type="Sprite2D" parent="Platform2" unique_id=900001008]
+position = Vector2(27.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile7" type="Sprite2D" parent="Platform2" unique_id=900001009]
+position = Vector2(45.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile8" type="Sprite2D" parent="Platform2" unique_id=900001010]
+position = Vector2(63.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile9" type="Sprite2D" parent="Platform2" unique_id=900001011]
+position = Vector2(81.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Platform3" type="StaticBody2D" parent="." unique_id=900002000]
+position = Vector2(665.0, 61)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3" unique_id=900002001]
+shape = SubResource("RectangleShape2D_platform3")
+
+[node name="Tile0" type="Sprite2D" parent="Platform3" unique_id=900002002]
+position = Vector2(-81.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile1" type="Sprite2D" parent="Platform3" unique_id=900002003]
+position = Vector2(-63.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile2" type="Sprite2D" parent="Platform3" unique_id=900002004]
+position = Vector2(-45.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile3" type="Sprite2D" parent="Platform3" unique_id=900002005]
+position = Vector2(-27.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile4" type="Sprite2D" parent="Platform3" unique_id=900002006]
+position = Vector2(-9.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile5" type="Sprite2D" parent="Platform3" unique_id=900002007]
+position = Vector2(9.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile6" type="Sprite2D" parent="Platform3" unique_id=900002008]
+position = Vector2(27.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile7" type="Sprite2D" parent="Platform3" unique_id=900002009]
+position = Vector2(45.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile8" type="Sprite2D" parent="Platform3" unique_id=900002010]
+position = Vector2(63.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile9" type="Sprite2D" parent="Platform3" unique_id=900002011]
+position = Vector2(81.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Platform4" type="StaticBody2D" parent="." unique_id=900003000]
+position = Vector2(1003.0, 31)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4" unique_id=900003001]
+shape = SubResource("RectangleShape2D_platform4")
+
+[node name="Tile0" type="Sprite2D" parent="Platform4" unique_id=900003002]
+position = Vector2(-99.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile1" type="Sprite2D" parent="Platform4" unique_id=900003003]
+position = Vector2(-81.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile2" type="Sprite2D" parent="Platform4" unique_id=900003004]
+position = Vector2(-63.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile3" type="Sprite2D" parent="Platform4" unique_id=900003005]
+position = Vector2(-45.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile4" type="Sprite2D" parent="Platform4" unique_id=900003006]
+position = Vector2(-27.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile5" type="Sprite2D" parent="Platform4" unique_id=900003007]
+position = Vector2(-9.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile6" type="Sprite2D" parent="Platform4" unique_id=900003008]
+position = Vector2(9.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile7" type="Sprite2D" parent="Platform4" unique_id=900003009]
+position = Vector2(27.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile8" type="Sprite2D" parent="Platform4" unique_id=900003010]
+position = Vector2(45.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile9" type="Sprite2D" parent="Platform4" unique_id=900003011]
+position = Vector2(63.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile10" type="Sprite2D" parent="Platform4" unique_id=900003012]
+position = Vector2(81.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Tile11" type="Sprite2D" parent="Platform4" unique_id=900003013]
+position = Vector2(99.0, 0)
+texture = ExtResource("7_floor")
+
+[node name="Flag" type="Area2D" parent="." unique_id=900004000]
+position = Vector2(1085.0, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flag" unique_id=900004001]
+shape = SubResource("RectangleShape2D_flag")
+
+[node name="ColorRect" type="ColorRect" parent="Flag" unique_id=900004002]
+offset_left = -3.0
+offset_top = -27.0
+offset_right = 3.0
+offset_bottom = 4.0
+color = Color(0.6, 0.6, 0.6, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Flag" unique_id=900004003]
+offset_left = 3.0
+offset_top = -27.0
+offset_right = 21.0
+offset_bottom = -15.0
+color = Color(0.898039, 0.223529, 0.207843, 1)
+
 [connection signal="timeout" from="CountDownTimer" to="." method="_on_count_down_timer_timeout"]
 [connection signal="body_entered" from="TimeReset" to="." method="_on_time_reset_body_entered"]
 [connection signal="body_entered" from="Void" to="." method="_on_void_body_entered"]
+[connection signal="body_entered" from="Flag" to="." method="_on_flag_body_entered"]
+[connection signal="pressed" from="CanvasLayer/WinScreen/PlayAgainButton" to="." method="_on_play_again_pressed"]
